@@ -23,7 +23,7 @@ document.getElementById("numbers").addEventListener("click", function(event){
     const displayNumbers = document.getElementById("display-numbers");
     const previousNumber = displayNumbers.value;
     const numberString = event.target.innerText;
-    
+
     if(isNaN(numberString)){
         if(numberString === "C"){
             displayNumbers.value = "";
@@ -37,5 +37,28 @@ document.getElementById("numbers").addEventListener("click", function(event){
     }
     else{
         displayNumbers.value = previousNumber + numberString;
+    }
+})
+
+document.getElementById("verify-btn").addEventListener("click", function(){
+    const randomNumbers = document.getElementById("show-random-pin").value;
+
+    const typedNumber = document.getElementById("display-numbers").value;
+
+    const successMsg = document.getElementById("success");
+    const wrongMsg = document.getElementById("wrong");
+
+    if(typedNumber === ""){
+        alert("please generate pin and match it");
+    }
+    else{
+        if(randomNumbers === typedNumber){
+            successMsg.style.display = "block";
+            wrongMsg.style.display = "none";
+        }
+        else if(randomNumbers !== typedNumber){
+            wrongMsg.style.display = "block";
+            successMsg.style.display = "none";
+        }
     }
 })
